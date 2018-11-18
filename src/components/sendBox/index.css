@@ -1,0 +1,131 @@
+.send-box {
+  float: none;
+  width: 90%;
+  margin: 0 auto;
+  height: auto;
+  background-color: #ffffff;
+}
+
+.send-box > div {
+  border-bottom: solid 1px #9c9d9e;
+  padding: 1em;
+}
+
+.send-box .form {
+  padding: 1em;
+}
+
+.send-box > .form > div > button {
+    margin-right: 2em;
+  }
+
+.send-box > .form button {
+  height: 2.3em;
+  width: 114px;
+  font-size: 0.9em;
+  color: #ffffff;
+}
+
+.send-box > .form label {
+  display: block;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.send-box > .form input {
+  border: 1px solid #9c9d9e;
+  font-size: 1.1em;
+  width: 45%;
+  padding-left: 1em;
+  height: 2.3em;
+  border-radius: 10px;
+}
+
+
+.address-amount {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.address-amount > :nth-child(1) {
+  width: 45%;
+}
+
+.address-amount > :nth-child(1) > input {
+  width: 100%;
+}
+.address-amount > :nth-child(2) {
+  width: 15%;
+  margin-left: 2%;
+}
+
+.address-amount > :nth-child(2) > input {
+  width: 100%;
+}
+
+.address-amount > :nth-child(3) {
+  width: 30%;
+  margin-left: 2%;
+  justify-content: space-around;
+}
+
+.address-amount > :nth-child(3) button {
+  width: auto;
+}
+
+/* ================ Address/amount table==================== */
+
+.address-table {
+  width: 100%;
+  height: 150px;
+  margin-top: 1em;
+}
+
+.address-table {
+  width: 100%;
+}
+
+.address-table > .th {
+  padding-right: 1.2em;
+}
+
+.address-table > .th > :nth-child(1) {
+  display: inline-block;
+  width: 50%;
+  min-width: 400px;
+}
+
+.address-table > .tb {
+  height: 70%;
+  overflow-y: scroll;
+}
+
+.address-table > .tb :hover {
+  background-color: #f0f0f0;
+}
+
+.address-table > .tb .tr {
+  height: 2em;
+  padding: 0.2em 0em;
+}
+
+.address-table > .tb .tr :nth-child(1) {
+  display: inline-block;
+  width: 50%;
+  min-width: 400px;
+}
+
+.address-table > .tb .tr :nth-child(2) {
+  display: inline-block;
+  margin-right: 15%;
+}
+
+.address-table > .tb .tr button {
+  height: 1.5em;
+  width: 1.5em;
+  border-radius: 30%;
+  background-color: #c85353;
+  padding: 4px;
+}
+/* ====================================================== */

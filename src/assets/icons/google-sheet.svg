@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 79.59 104.462">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #43a047;
+      }
+
+      .cls-2 {
+        fill: #c8e6c9;
+      }
+
+      .cls-3 {
+        fill: #2e7d32;
+      }
+
+      .cls-4 {
+        fill: #e8f5e9;
+      }
+    </style>
+  </defs>
+  <g id="icons8-google-sheets" transform="translate(-8 -3)">
+    <path id="Path_40" data-name="Path 40" class="cls-1" d="M80.128,107.462H15.462A7.463,7.463,0,0,1,8,100V10.462A7.463,7.463,0,0,1,15.462,3H62.718L87.59,27.872V100A7.463,7.463,0,0,1,80.128,107.462Z" transform="translate(0 0)"/>
+    <path id="Path_41" data-name="Path 41" class="cls-2" d="M54.872,27.872H30V3Z" transform="translate(32.718 0)"/>
+    <path id="Path_42" data-name="Path 42" class="cls-3" d="M30,13,54.872,37.872V13Z" transform="translate(32.718 14.872)"/>
+    <path id="Path_43" data-name="Path 43" class="cls-4" d="M54.795,23H15V57.821H59.769V23ZM19.974,27.974h9.949v4.974H19.974Zm0,9.949h9.949V42.9H19.974Zm0,9.949h9.949v4.974H19.974Zm34.821,4.974H34.9V47.872h19.9Zm0-9.949H34.9V37.923h19.9Zm0-9.949H34.9V27.974h19.9Z" transform="translate(10.41 29.744)"/>
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+.built-with {
+    text-align: center;
+}
+
+.built-with button {
+    height: 3em;
+    width: 220px;
+    color: #ffffff;
+}
+
+.built-with > p {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}

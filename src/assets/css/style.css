@@ -1,0 +1,173 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+main {
+  padding-left: 12em;
+  padding-right: 12em;
+}
+
+.shadowize {
+  box-shadow: 0px 0px 8px 0px rgba(110, 110, 110, 0.68);
+  -moz-box-shadow: 0px 0px 8px 0px rgba(110, 110, 110, 0.68);
+  -webkit-box-shadow: 0px 0px 8px 0px rgba(110, 110, 110, 0.68);
+}
+
+.row {
+  width: 100%;
+}
+
+.board {
+  border-radius: 15px;
+  height: 350px;
+  width: 350px;
+  float: right;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.3em;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ms-black {
+  color: #1f2023;
+}
+
+.ms-light-green {
+  color: #c8f0c5;
+}
+
+.ms-faint-green {
+  color: #76d86e;
+}
+
+.ms-green {
+  color: #1bbf0d;
+}
+
+.ms-green-bg {
+  background-color: #1bbf0d;
+}
+
+.ms-brown {
+  color: #6e6e6e;
+}
+
+.ms-brown-bg {
+  background-color: #6e6e6e;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+a {
+  display: block;
+  text-align: center;
+  /* padding: 14px 16px; */
+  text-decoration: none;
+  color: #1f2023;
+}
+
+li {
+  float: left;
+}
+
+button {
+  border: 0;
+  outline: none;
+}
+
+input {
+  border: 0;
+  outline: none;
+}
+
+.wt-icon img {
+  width: 0.8em;
+  height: 0.8em;
+}
+
+.ms-btn {
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-shadow: 3px 3px 6px 1px rgba(110, 110, 110, 0.193);
+  -moz-box-shadow: 3px 3px 6px 1px rgba(110, 110, 110, 0.193);
+  -webkit-box-shadow: 3px 3px 6px 1px rgba(110, 110, 110, 0.193);
+}
+
+.ms-btn:hover {
+  transform: translateY(-1px);
+  transition: 0.4s ease-in-out;
+}
+
+/* li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+} */
+
+h3 {
+  color: #1f2023;
+  font-weight: lighter;
+}
+
+h4 {
+  color: #1f2023;
+  font-weight: lighter;
+  font-size: 1.1em;
+}
+
+p {
+  line-height: 1.3em;
+  color: #747476;
+}
+
+/* 
+============================Connect To Metamask Page========================
+*/
+
+.connect {
+  background-color: #cccccc;
+  height: 100vh;
+  width: 100%;
+}
+
+.connect header ul,
+.connect header button {
+  visibility: hidden;
+}
+
+/* 
+============================Connect To Metamask Page========================
+*/
+.send {
+  background-color: #f5f8f9;
+  height: 100vh;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}

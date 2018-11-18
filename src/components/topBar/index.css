@@ -1,0 +1,30 @@
+.top-bar {
+    width: 100%;
+    align-items: center;
+}
+
+.top-bar > a > img {
+    width: 8em;
+    height: 2em;
+}
+
+.top-bar > ul li {
+    padding: 20px;
+}
+
+.top-bar > ul li > a {
+    color: #747476;
+    font-weight: 400;
+    font-size: 0.95em;
+}
+
+.top-bar > ul {
+    margin: 0 auto;
+    font-size: 1.1em;
+}
+
+.top-bar > button {
+    height: 2.5em;
+    color: white;
+    width: 7em;
+}

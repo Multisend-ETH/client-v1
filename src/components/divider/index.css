@@ -1,0 +1,12 @@
+.divider {
+    margin-top: 6em;
+    margin-bottom: 6em;
+}
+
+.ms-divider {
+    margin-right: -12em;
+    margin-left: -12em;
+    color: #9c9d9e;
+    background-color: #9c9d9e;
+    border-top: 0
+}

@@ -1,0 +1,42 @@
+.connect-metamask-board {
+    float: none;
+    margin: 6em auto;
+    background-color: #ffffff;
+    padding: 2em 3em 2em 3em;
+    width: 75%;
+    max-width: 750px;
+    height: 150px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.connect-metamask-board img {
+    width: 13%;
+    max-width: 70px;
+}
+
+.connect-metamask-board > div {
+    max-width: 355px
+}
+
+.connect-metamask-board button {
+    background-color: #f5841f;
+    color: #ffffff;
+    height: 45px;
+    max-width: 120px;
+    width: 20%;
+}
+
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+and (min-resolution:.001dpcm) {
+    .connect-metamask-board button {
+        width: 135px;
+    }
+}
+
+.connect-metamask-board > div > h2 {
+    color: #1f2023;
+    font-weight: lighter;
+    margin-bottom: -0.2em;
+}
