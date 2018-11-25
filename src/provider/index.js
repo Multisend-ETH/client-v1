@@ -16,18 +16,28 @@ export default class Provider extends React.Component {
       url: "",
       loading: false,
       amount: [1.23],
+      addresses: ['0x00B6845c6F47C770cE630B96df9BD4A6dA91C65d', '0x00B6845c6F47C770cE630B96df9BD4A6dA91C65d'],
+      amounts: [0.1, 0.2],
       newAddress: "",
       newAmount: "",
       txHash: "",
       sending: false,
       tokenSymbol: "",
-      openModal: false,
+      modalName: "",
+      metamaskAddress: "",
 
       handleAdd: (key, val) => {
         return this.setState(state => {
           state.ctx[key].push(val);
           return state;
         });
+      },
+
+      closeModal: () =>{
+        return this.setState(state => {
+          state.ctx.modalName = ""
+          return state
+        })
       },
 
       handleResetAddrAndAmnt: () => {

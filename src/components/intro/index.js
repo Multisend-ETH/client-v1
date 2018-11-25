@@ -3,6 +3,7 @@ import "./index.css";
 import icons from "./../../assets/icons/index";
 import imgs from './../../assets/imgs/index';
 import { RightBars, LeftBars } from './bars';
+import Button from '../ButtonWithRouter'
 
 export default () => (
   <section className="flex-container intro">
@@ -17,9 +18,9 @@ export default () => (
         incredible amount of time, energy and money in distributing Ethereum
         assests.
       </p>
-      <button className="ms-btn wt-icon ms-green-bg">
+      <Button to="/connect" customStyle="ms-btn wt-icon ms-green-bg">
         START SENDING <img src={icons.diagonalArrow} alt="icon" />
-      </button>
+      </Button>
     </div>
     <div>
       {/* <div className="shadowize board" /> */}

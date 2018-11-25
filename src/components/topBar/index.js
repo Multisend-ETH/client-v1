@@ -2,6 +2,7 @@ import React from "react";
 import "./index.css";
 import icons from "./../../assets/icons/index";
 import imgs from './../../assets/imgs/index';
+import Button from "..//ButtonWithRouter"
 
 export default ({beta}) => {
   const BetaImg = beta ? <img className="beta-icon" src={beta} alt="beta"/> : null
@@ -13,18 +14,18 @@ export default ({beta}) => {
         </a>
       <ul>
         <li>
-          <a href="/about">ABOUT</a>
+          <a href="/">ABOUT</a>
         </li>
         <li>
-          <a href="/contact">CONTACT</a>
+          <a href="#contact">CONTACT</a>
         </li>
         <li>
-          <a href="/help">HELP</a>
+          <a href="#help">HELP</a>
         </li>
       </ul>
-      <button className="ms-btn wt-icon ms-green-bg">
+      <Button to="connect" customStyle="ms-btn wt-icon ms-green-bg">
         SEND <img src={icons.diagonalArrow} alt="icon" />
-      </button>
+      </Button>
     </header>
   );
 }

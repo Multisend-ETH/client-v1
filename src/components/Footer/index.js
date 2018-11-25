@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css'
 
 export default () => (
-    <footer className="flex-container footer">
+    <footer id="contact" className="flex-container footer">
         <div><div>© MultiSend</div></div>
         <div><a href="/donate">Donate</a></div>
         <ul>

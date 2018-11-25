@@ -9,7 +9,7 @@ export default () => (
       Multisend is the first production ready Dapp to be built with Vyper - The
       new Ethereum Programming Language
     </p>
-    <button className="ms-btn wt-icon ms-brown-bg ">
+    <button onClick={() => window.open('https://github.com/ethereum/vyper')} className="ms-btn wt-icon ms-brown-bg ">
       LEARN ABOUT VYPER <img src={icons.diagonalArrow} alt="icon" />
     </button>
   </section>

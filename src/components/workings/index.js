@@ -3,7 +3,7 @@ import Step from "./steps";
 import './index.css'
 
 export default () => (
-  <section className="flex-container steps">
+  <section id="help" className="flex-container steps">
     <h3>HOW IT WORKS</h3>
     <div className="flex-container">
       <Step

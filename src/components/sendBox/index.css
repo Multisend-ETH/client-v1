@@ -118,7 +118,7 @@
 
 .address-table > .tb .tr :nth-child(2) {
   display: inline-block;
-  margin-right: 15%;
+  /* margin-right: 15%; */
 }
 
 .address-table > .tb .tr button {
@@ -127,5 +127,13 @@
   border-radius: 30%;
   background-color: #c85353;
   padding: 4px;
+  margin-right: 3em;
+  float: right;
 }
 /* ====================================================== */
+
+.strip-away {
+  background-color: #ffffff;
+  color: #1f2023 !important;
+  box-shadow: none;
+}
