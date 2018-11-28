@@ -13,10 +13,10 @@ export default () => (
         <span className="ms-green">Multiple</span> Ethereum Addresses
       </h2>
       <p>
-        With Multisend, you can send Ether and ERC-20 tokens to multiple wallet
+        With Multisend, you can distribute Ether and ERC-20 tokens to multiple wallet
         addresses at once with a single transaction fee. MultiSends saves you an
         incredible amount of time, energy and money in distributing Ethereum
-        assests.
+        assets.
       </p>
       <Button to="/connect" customStyle="ms-btn wt-icon ms-green-bg">
         START SENDING <img src={icons.diagonalArrow} alt="icon" />

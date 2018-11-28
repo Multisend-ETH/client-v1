@@ -5,7 +5,7 @@ import './index.css'
 export default () => (
   <section id="help" className="flex-container steps">
     <h3>HOW IT WORKS</h3>
-    <div className="flex-container">
+    <div className="flex-container step-mobile">
       <Step
         topic="Connect to Metamask"
         content="We don't expose you to risks by asking"

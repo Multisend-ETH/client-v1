@@ -11,9 +11,7 @@ if (window.ethereum) {
   console.log("Legacy browser");
   web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
   if (!web3.currentProvider.isMetaMask) {
-    window.alert(
-      "Metamask is not installed in this browser, Please Install metamask and login."
-    );
+    //pass
   }
 }
 
@@ -159,8 +157,9 @@ const bulkSendToken = async (
 
 const getTokenSymbol = async tokenAddress => {
   try {
+    const currAccount = await getcurrAcct();
     const token = new web3.eth.Contract(TOKEN_ABI, tokenAddress);
-    const tokenSymbol = await token.methods.symbol().call();
+    const tokenSymbol = await token.methods.symbol().call({from: currAccount});
     return tokenSymbol;
   } catch (err) {
     console.log(err);
@@ -169,16 +168,16 @@ const getTokenSymbol = async tokenAddress => {
 };
 
 // ============================================
-const acct = require('web3-eth-accounts');
-// const Account = web3.eth.accounts("wss://ropsten.infura.io/ws")
-// const accts = new acct("wss://ropsten.infura.io/ws")
-const a = web3.eth.accounts.create()
-bulksendContract.methods
-.getbalance(contractAddress)
-.call({ from: a.address })
-.then(bal => console.log(bal));
-console.log(a.address)
-web3.eth.getAccounts().then(acct => console.log(acct))
+// const acct = require('web3-eth-accounts');
+// // const Account = web3.eth.accounts("wss://ropsten.infura.io/ws")
+// // const accts = new acct("wss://ropsten.infura.io/ws")
+// const a = web3.eth.accounts.create()
+// bulksendContract.methods
+// .getbalance(contractAddress)
+// .call({ from: a.address })
+// .then(bal => console.log(bal));
+// console.log(a.address)
+// web3.eth.getAccounts().then(acct => console.log(acct))
 
 
 //=========================================

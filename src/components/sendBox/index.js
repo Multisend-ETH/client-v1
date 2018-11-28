@@ -59,10 +59,14 @@ class SendBox extends React.Component {
 
   addNew = () => {
     const { ctx } = this.props;
+    if (!ctx.newAddress || !ctx.newAmount) {
+      return;
+    }
     ctx.handleAdd("addresses", ctx.newAddress);
     ctx.handleAdd("amounts", ctx.newAmount);
     ctx.handleChange("newAmount", "");
     ctx.handleChange("newAddress", "");
+    return;
   };
 
   openImportModal = () => {
@@ -87,13 +91,12 @@ class SendBox extends React.Component {
       } catch (err) {
         console.log(err);
       }
-      if(txHash){
-        console.log(txHash)
-        ctx.handleChange("txHash", txHash)
-        ctx.handleChange("modalName", "success")
+      if (txHash) {
+        console.log(txHash);
+        ctx.handleChange("txHash", txHash);
+        ctx.handleChange("modalName", "success");
       }
       ctx.handleChange("sending", false);
-      
     }
   };
 
@@ -114,14 +117,12 @@ class SendBox extends React.Component {
       tokenSym = ctx.tokenSymbol || "tokens";
     }
 
-    if(ctx.sending){
-      btnText = 'Sending...'
-      disabled = true
-    }else{
-      btnText = 'Send'
+    if (ctx.sending) {
+      btnText = "Sending...";
+      disabled = true;
+    } else {
+      btnText = "Send";
     }
-
-    
 
     return (
       <div className="board shadowize send-box">
@@ -149,6 +150,18 @@ class SendBox extends React.Component {
           <input
             value={ctx.tokenAddress}
             onChange={e => {
+              if (e.target.value.length >= 41) {
+                try {
+                  console.log(e.target.value);
+                  ethApi.getTokenSymbol(e.target.value).then(res => {
+                    if (res) {
+                      ctx.handleChange("tokenSymbol", res);
+                    }
+                  });
+                } catch (err) {
+                  return;
+                }
+              }
               ctx.handleChange(e.target.name, e.target.value);
             }}
             className={`${hideToken}`}

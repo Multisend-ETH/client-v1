@@ -1,7 +1,7 @@
 .send-box {
   float: none;
   width: 90%;
-  margin: 0 auto;
+  margin: 1em auto;
   height: auto;
   background-color: #ffffff;
 }

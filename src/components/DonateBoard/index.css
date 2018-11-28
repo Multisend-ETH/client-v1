@@ -1,8 +1,18 @@
 .donation-address {
     margin-top: 1em;
+    font-size: 0.65em;
+    line-height: 1.9em;
+    position: absolute;
+    bottom: 2em;
+    left: 3em;
+}
+
+.donation-board > img {
+    height: 6em;
 }
 
 .donation-board {
     float: none;
     margin: 4em auto;
+    position: relative;
 }

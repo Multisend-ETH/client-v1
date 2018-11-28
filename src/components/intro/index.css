@@ -1,6 +1,6 @@
 .intro {
   margin-top: 3em;
-  position: relative;
+  /* position: relative; */
 }
 .intro > :nth-child(1) {
   width: 50%;
@@ -27,6 +27,7 @@
   max-height: 400px;
   max-width: 400px;
   float: right;
+  min-width: 300px;
 }
 
 .intro h2 {
@@ -72,11 +73,15 @@
     padding-left: 0.5em;
 }
 
+.intro > :nth-child(3) > div button {
+  padding: 0.7em
+}
+
 .intro > :nth-child(3) > h4 {
   width: 300px;
   color: #1f2023;
   font-weight: lighter;
-  font-size: 1.1em
+  font-size: 1.13em
 }
 
 .intro p {
@@ -91,7 +96,7 @@
 
 .intro > div > button {
   width: 180px;
-  height: 2.9em;
+  height: 2.5em;
 }
 
 .right-bars,
@@ -111,8 +116,8 @@
 }
 
 .right-bars {
-  margin-right: -12em;
-  top: -5em;
+  margin-right: 0em;
+  top: 2em;
   right: 0;
   /* background-image: url("../../assets/imgs/Group 5.svg") */
 }
@@ -125,8 +130,8 @@
 }
 
 .left-bars {
-  margin-left: -15em;
-  top: 7em;
-  left: 0;
+  margin-left: 0em;
+  top: 13em;
+  left: -1em;
   /* background-image: url("../../assets/imgs/Group 5.svg") */
 }

@@ -4,7 +4,7 @@
     background-color: #ffffff;
     padding: 2em 3em 2em 3em;
     width: 75%;
-    max-width: 750px;
+    max-width: 700px;
     height: 150px;
     justify-content: space-between;
     align-items: center;
@@ -16,7 +16,13 @@
 }
 
 .connect-metamask-board > div {
-    max-width: 355px
+    max-width: 355px;
+    line-height: 0.9em;
+}
+
+.connect-metamask-board > div > p {
+    font-size: 0.98em;
+
 }
 
 .connect-metamask-board button {

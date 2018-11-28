@@ -6,6 +6,17 @@
 .steps > h3 {
     width: 100%;
     text-align: center;
+    margin-bottom: -0.4em;
+}
+
+.step > p {
+    font-size: 1.0em;
+    margin-top: -0.8em;
+    
+}
+
+.step > h4 {
+    font-size: 1.0em;
 }
 
 .steps > div {
