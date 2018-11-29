@@ -66,20 +66,24 @@ const bulksend = async (
     }
   }
   console.log(value);
-  const fee = await bulksendContract.methods.ethSendFee().call();
+  const fee = await bulksendContract.methods.sendEthFee().call();
   value = (Number(value) + Number(fee)).toString();
+
+  // concat 0s to amount array if the length is less than 0 to prevent undefined error
+  amountArr = amountArr.concat(Array(100 - amountArr.length).fill("0"));
   try {
     const txHash = await bulksendContract.methods
-      .bulkSendEth(addressArr, amountArr)
+      .multiSendEther(addressArr, amountArr)
       .send({
         from: currAccount,
         //gasPrice: "",
         //gas: "",
         value: value
-      }).then(tx => tx)
+      })
+      .then(tx => tx);
     return txHash.transactionHash;
   } catch (err) {
-    console.log("error");
+    console.log(err);
     return null;
   }
 };
@@ -94,7 +98,7 @@ const bulkSendToken = async (
   const currAccount = await getcurrAcct();
   let amountArr = [];
   let total = 0;
-  const sendTokenfee = await bulksendContract.methods.tokenSendFee().call();
+  const sendTokenfee = await bulksendContract.methods.sendTokenFee().call();
   const token = new web3.eth.Contract(TOKEN_ABI, tokenAddress);
   const tokenDecimals = await token.methods.decimals().call();
   for (const a of _amountArr) {
@@ -112,21 +116,22 @@ const bulkSendToken = async (
         //gasPrice: "",
         //gas: "",
       });
+    // concat 0s to amount array if the length is less than 0 to prevent undefined error
+    amountArr = amountArr.concat(Array(100 - amountArr.length).fill("0"));
     if (allowTransfer.transactionHash) {
       const distribute = await bulksendContract.methods
-        .bulkSendToken(tokenAddress, addressArr, amountArr)
+        .multiSendToken(tokenAddress, addressArr, amountArr)
         .send({
           from: currAccount,
           //gasPrice: "",
           //gas: "",
           value: value
         });
-        console.log(distribute.transactionHash)
+      console.log(distribute.transactionHash);
       return distribute.transactionHash;
-    }else{
+    } else {
       return null;
     }
-    
   } catch (err) {
     return null;
   }
@@ -159,7 +164,9 @@ const getTokenSymbol = async tokenAddress => {
   try {
     const currAccount = await getcurrAcct();
     const token = new web3.eth.Contract(TOKEN_ABI, tokenAddress);
-    const tokenSymbol = await token.methods.symbol().call({from: currAccount});
+    const tokenSymbol = await token.methods
+      .symbol()
+      .call({ from: currAccount });
     return tokenSymbol;
   } catch (err) {
     console.log(err);
@@ -178,7 +185,6 @@ const getTokenSymbol = async tokenAddress => {
 // .then(bal => console.log(bal));
 // console.log(a.address)
 // web3.eth.getAccounts().then(acct => console.log(acct))
-
 
 //=========================================
 

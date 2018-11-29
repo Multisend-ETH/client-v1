@@ -62,16 +62,29 @@
 
 /* ============Confirm Txn modal======== */
 
-.confirm-txn {
+.confirm-txn, .success-txn {
     width: 380px;
     text-align: justify;
     text-justify: inter-word;
     height: 130px;
 }
 
-.confirm-txn > div {
+.success-txn {
+    height: 160px;
+}
+
+.confirm-txn > div, .success-txn > div {
     width: 100%;
     position: relative;
+}
+
+.success-txn > div > :nth-child(3) {
+    text-align: left
+}
+
+.success-txn > div > :nth-child(4) {
+    text-align: right;
+    margin-top: 1em;
 }
 
 .confirm-txn > div > :nth-child(3){
