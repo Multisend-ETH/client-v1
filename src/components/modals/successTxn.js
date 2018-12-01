@@ -6,7 +6,7 @@ export default withContext(({ Ref, ctx }) => (
   <div ref={Ref} className="board shadowize gs-modal success-txn">
     <div>
       <div>Transaction Successful</div>
-      <div>You succesfully distributed 0.44 ETH</div>
+      <div>{`Your ${ctx.selected} has been succesfully distributed`}</div>
       <a
         target="_blank"
         rel="noopener noreferrer"
