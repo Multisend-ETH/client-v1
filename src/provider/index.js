@@ -23,7 +23,7 @@ export default class Provider extends React.Component {
       txHash: "",
       sending: false,
       tokenSymbol: "",
-      modalName: "success",
+      modalName: "",
       metamaskAddress: "",
 
       handleAdd: (key, val) => {

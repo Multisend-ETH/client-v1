@@ -59,7 +59,10 @@ class SendBox extends React.Component {
 
   addNew = () => {
     const { ctx } = this.props;
-    if (!ctx.newAddress || !ctx.newAmount) {
+    if (!ctx.newAddress || !ctx.newAmount || ctx.addNew <= 0) {
+      return;
+    }
+    if(!ctx.newAddress.startsWith("0x") || ctx.newAddress.length < 42 ){
       return;
     }
     ctx.handleAdd("addresses", ctx.newAddress);
