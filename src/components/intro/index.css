@@ -10,14 +10,18 @@
 .intro > :nth-child(1) > h2 {
   max-width: 420px;
   text-align: left;
+  font-weight: 500px;
   /* text-justify: inter-word; */
 }
 
 .intro > :nth-child(1) > p {
+  margin-top: 24px;
   max-width: 450px;
   text-align: justify;
   text-justify: inter-word;
+  font-size: 20px;
 }
+
 
 .intro > :nth-child(2) {
   width: 50%;
@@ -48,7 +52,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-top: 2em;
+  margin-top: 115px;
 }
 
 .intro > :nth-child(3) > div {
@@ -57,7 +61,7 @@
 
 .intro > :nth-child(3) > div > div {
     margin: 0 auto;
-    width: 280px;
+    width: 405px;
     height: 3em;
     padding: 0.4em 0em 0.4em 0em;
     background-color: #f5f8f9;
@@ -65,7 +69,7 @@
 }
 
 .intro > :nth-child(3) > div input {
-    width: 220px;
+    width: 350px;
     margin-right: 5px;
     background-color: #f5f8f9;
     height: 2em;

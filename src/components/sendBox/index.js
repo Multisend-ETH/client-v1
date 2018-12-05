@@ -31,7 +31,7 @@ class SendBox extends React.Component {
             ctx.handleChange("amounts", amounts);
           }}
         >
-          X
+          x
         </button>
       </div>
     ));
@@ -127,7 +127,7 @@ class SendBox extends React.Component {
     return (
       <div className="board shadowize send-box">
         <div>
-          <div>Metamask Address</div>
+          <div className="mm-font">Metamask</div>
           <div>{ctx.metamaskAddress}</div>
         </div>
         <div className="form">
@@ -203,7 +203,7 @@ class SendBox extends React.Component {
               </button>
               <button
                 onClick={this.openImportModal}
-                className="ms-btn wt-icon ms-green-bg"
+                className="ms-btn wt-icon ms-green-bg mv-right"
               >
                 Import ↓
               </button>

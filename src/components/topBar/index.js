@@ -20,11 +20,11 @@ export default ({beta}) => {
           <a href="#contact">CONTACT</a>
         </li>
         <li>
-          <a href="#help">HELP</a>
+          <a href="#help">FAQ</a>
         </li>
       </ul>
       <Button to="connect" customStyle="ms-btn wt-icon ms-green-bg">
-        SEND <img src={icons.diagonalArrow} alt="icon" />
+        SEND <span className="send-arrow">↗</span>
       </Button>
     </header>
   );

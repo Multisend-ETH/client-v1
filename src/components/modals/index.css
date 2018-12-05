@@ -1,108 +1,133 @@
 .modal {
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    justify-content: center;
-    padding-top: 200px
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  justify-content: center;
+  padding-top: 200px;
 }
 
 /* ============Google sheet modal======== */
-.gs-modal{
-    background-color: #fff;
-    height: 200px;
-    width: 450px;
-    padding: 25px;
-    display: flex;
-    flex-wrap: wrap;
+.gs-modal {
+  background-color: #fff;
+  height: 200px;
+  width: 450px;
+  padding: 25px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .gs-modal > img {
-    width: 23%;
-    padding: 0.3em;
+  width: 23%;
+  padding: 0.3em;
 }
 
 .gs-modal > div {
-    width: 70%;
-    margin-left: 1em;
+  width: 70%;
+  margin-left: 1em;
 }
 
 .gs-modal > div > * {
-    width: 100%;
+  width: 100%;
 }
 
-.gs-modal > div > :nth-child(1){
-    font-size: 1.2em;
+.gs-modal > div > :nth-child(1) {
+  font-size: 1.2em;
 }
 
-.gs-modal > div > :nth-child(2){
-    font-size: 0.8em;
-    color: #8a8989;
+.gs-modal > div > :nth-child(2) {
+  font-size: 0.8em;
+  color: #8a8989;
 }
 
 .gs-modal > div > input {
-    height: 2em;
-    border: 1px solid #8a8989;
-    border-radius: 5px;
-    padding-left: 1em;
-    margin: 1em 0em;
+  margin: 1em 0em;
+
+  border: 1px solid rgba(112, 112, 112, 0.4);
+  font-size: 1.1em;
+  padding: 15px 10px;
+  height: 2.3em;
+  border-radius: 10px;
+  font-size: 17px;
+  height: 45px;
 }
 
-.gs-modal > div  button {
-    height: 2em;
-    border-radius: 5px;
-    color: #fff;
-    background-color: #6e6e6e;
+.gs-modal > div input::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.gs-modal > div input:hover,
+.gs-modal > div input:focus {
+  border-color: #1bbf0d;
+}
+
+.gs-modal > div button {
+  height: 2em;
+  border-radius: 10px;
+  color: #fff;
+  background-color: #1bbf0d;
 }
 
 /* ============Confirm Txn modal======== */
 
-.confirm-txn, .success-txn {
-    width: 380px;
-    text-align: justify;
-    text-justify: inter-word;
-    height: 130px;
+.confirm-txn,
+.success-txn {
+  width: 380px;
+  text-align: justify;
+  text-justify: inter-word;
+  height: 130px;
 }
 
 .success-txn {
-    height: 160px;
+  height: 170px;
 }
 
-.confirm-txn > div, .success-txn > div {
-    width: 100%;
-    position: relative;
+.success-txn > div > a {
+    text-decoration: underline;
+    color: #1bbf0d;
+}
+
+.confirm-txn > div,
+.success-txn > div {
+  width: 100%;
+  position: relative;
 }
 
 .success-txn > div > :nth-child(3) {
-    text-align: left
+  text-align: left;
 }
 
 .success-txn > div > :nth-child(4) {
-    text-align: right;
-    margin-top: 1em;
+  text-align: right;
+  margin-top: 1em;
 }
 
-.confirm-txn > div > :nth-child(3){
-    position: absolute;
-    bottom: 0px;
-    padding-left: 30%;
+.confirm-txn > div > :nth-child(3) {
+  position: absolute;
+  bottom: 0px;
+  padding-left: 30%;
 }
 
 .cancel-btn {
-    background-color: #eb6262 !important;
-    margin: 0% 5%
+  background-color: #eb6262 !important;
+  margin: 0% 5%;
 }
 
 .confirm-btn {
-    background-color: #1bbf0d !important;
-    margin: 0% 5%
+  background-color: #1bbf0d !important;
+  margin: 0% 5%;
 }
 
 .back-btn {
-    margin: 0% 5%
+  margin: 0% 5%;
+  background-color: #6e6e6e !important;
+}
+.success-msg {
+    font-size: 15px !important;
+    margin-bottom: 10px;
 }

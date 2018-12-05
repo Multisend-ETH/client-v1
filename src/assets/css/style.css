@@ -1,7 +1,19 @@
 @font-face {
   font-family: "TTCommons";
   src: local("TTCommons"),
-    url(./../fonts/TTCommons-Regular.ttf) format("truetype");
+    url(./../fonts/TTCommons-Medium.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "TTCommons-light";
+  src: local("TTCommons-light"),
+    url(./../fonts/TTCommons-Light.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "TTCommons-DemiBold";
+  src: local("TTCommons-DemiBold"),
+    url(./../fonts/TTCommons-DemiBold.ttf) format("truetype");
 }
 
 body,
@@ -27,9 +39,9 @@ main {
 }
 
 .shadowize {
-  box-shadow: 0px 0px 8px 0px rgba(110, 110, 110, 0.68);
-  -moz-box-shadow: 0px 0px 8px 0px rgba(110, 110, 110, 0.68);
-  -webkit-box-shadow: 0px 0px 8px 0px rgba(110, 110, 110, 0.68);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
 }
 
 .row {
@@ -120,9 +132,13 @@ input {
   border-radius: 10px;
   padding-left: 15px;
   padding-right: 15px;
-  box-shadow: 3px 3px 6px 1px rgba(110, 110, 110, 0.193);
-  -moz-box-shadow: 3px 3px 6px 1px rgba(110, 110, 110, 0.193);
-  -webkit-box-shadow: 3px 3px 6px 1px rgba(110, 110, 110, 0.193);
+  box-shadow: 0 2px 4px 0 rgba(27, 191, 13, 0.3);;
+  -moz-box-shadow: 0 2px 4px 0 rgba(27, 191, 13, 0.3);;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(27, 191, 13, 0.3);;
+}
+
+.ms-btn:hover {
+  cursor: pointer;
 }
 
 .ms-btn:hover {
@@ -141,6 +157,7 @@ input {
 h3 {
   color: #1f2023;
   font-weight: lighter;
+  font-family: TTCommons-DemiBold;
 }
 
 h4 {
@@ -178,6 +195,8 @@ p {
   background-color: #f5f8f9;
   height: 100vh;
   width: 100%;
+  padding-left: 20%;
+  padding-right: 20%;
 }
 
 .hidden {

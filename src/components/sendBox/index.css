@@ -1,22 +1,28 @@
 .send-box {
   float: none;
-  width: 90%;
+  width: 100%;
   margin: 1em auto;
   height: auto;
   background-color: #ffffff;
 }
 
-.send-box > div {
-  border-bottom: solid 1px #9c9d9e;
+.send-box > :nth-child(1) {
+  border-bottom: solid 1px rgba(0, 0, 0, .2);
   padding: 1em;
+  opacity: 0.4;
+}
+
+.mm-font {
+  font-size: 0.9em;
+  margin-bottom: 2px;
 }
 
 .send-box .form {
-  padding: 1em;
+  padding: 25px;
 }
 
 .send-box > .form > div > button {
-    margin-right: 2em;
+    margin-right: 20px;
   }
 
 .send-box > .form button {
@@ -30,15 +36,26 @@
   display: block;
   margin-top: 1.5em;
   margin-bottom: 0.5em;
+  opacity: 0.6;
 }
 
 .send-box > .form input {
-  border: 1px solid #9c9d9e;
+  border: 1px solid rgba(112, 112, 112, 0.4);
   font-size: 1.1em;
   width: 45%;
-  padding-left: 1em;
+  padding: 15px 10px;
   height: 2.3em;
   border-radius: 10px;
+  font-size: 17px;
+  height: 45px
+}
+
+.send-box > .form input::-webkit-input-placeholder{
+  color: rgba(0, 0, 0, .4)
+}
+
+.send-box > .form input:hover, .send-box > .form input:focus {
+  border-color: #1bbf0d;
 }
 
 
@@ -70,6 +87,10 @@
   justify-content: space-around;
 }
 
+.mv-right {
+  margin-left: auto;
+}
+
 .address-amount > :nth-child(3) button {
   width: auto;
 }
@@ -79,7 +100,7 @@
 .address-table {
   width: 100%;
   height: 150px;
-  margin-top: 1em;
+  margin-top: 30px;
 }
 
 .address-table {
@@ -88,6 +109,8 @@
 
 .address-table > .th {
   padding-right: 1.2em;
+  opacity: 0.6;
+  margin-bottom: 10px;
 }
 
 .address-table > .th > :nth-child(1) {
@@ -101,9 +124,9 @@
   overflow-y: scroll;
 }
 
-.address-table > .tb :hover {
+/* .address-table > .tb :hover {
   background-color: #f0f0f0;
-}
+} */
 
 .address-table > .tb .tr {
   height: 2em;
@@ -125,10 +148,15 @@
   height: 1.5em;
   width: 1.5em;
   border-radius: 30%;
-  background-color: #c85353;
+  background-color: #E96365;
   padding: 4px;
   margin-right: 3em;
   float: right;
+}
+
+.footer-send > span {
+  font-size: 15px;
+  opacity: 0.7;
 }
 /* ====================================================== */
 

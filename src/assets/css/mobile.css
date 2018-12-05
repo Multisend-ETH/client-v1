@@ -165,13 +165,23 @@
   }
   .intro > :nth-child(2) > img {
     float: none !important;
+    width: 100% !important;
+    
   }
   .intro > :nth-child(2) {
     width: 100% !important;
     text-align: center !important;
   }
 
-  .donation-board{
+  .donation-board {
     width: 100% !important;
+  }
+
+  .intro > :nth-child(3) > div > div {
+    width: 300px !important;
+  }
+
+  .intro > :nth-child(3) > div input {
+    width: 240px !important;
   }
 }

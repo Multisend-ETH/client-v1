@@ -19,7 +19,7 @@ export default () => (
         assets.
       </p>
       <Button to="/connect" customStyle="ms-btn wt-icon ms-green-bg">
-        START SENDING <img src={icons.diagonalArrow} alt="icon" />
+        START SENDING <span className="send-arrow">↗</span>
       </Button>
     </div>
     <div>

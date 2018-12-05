@@ -10,6 +10,8 @@
     align-items: center;
 }
 
+
+
 .connect-metamask-board img {
     width: 13%;
     max-width: 70px;
@@ -31,6 +33,9 @@
     height: 45px;
     max-width: 120px;
     width: 20%;
+    box-shadow: 0 2px 4px 0 rgba(245, 132, 31, 0.3);
+    -moz-box-shadow: 0 2px 4px 0 rgba(245, 132, 31, 0.3);
+    -webkit-box-shadow: 0 2px 4px 0 rgba(245, 132, 31, 0.3);
 }
 
 /* Chrome 29+ */
