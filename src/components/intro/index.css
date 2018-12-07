@@ -10,7 +10,7 @@
 .intro > :nth-child(1) > h2 {
   max-width: 420px;
   text-align: left;
-  font-weight: 500px;
+  font-weight: 500;
   /* text-justify: inter-word; */
 }
 
