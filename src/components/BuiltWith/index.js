@@ -1,6 +1,5 @@
 import React from "react";
 import "./index.css";
-import icons from "./../../assets/icons/index";
 
 export default () => (
   <section className="built-with">

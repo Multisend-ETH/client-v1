@@ -1,6 +1,5 @@
 import React from "react";
 import "./index.css";
-import icons from "./../../assets/icons/index";
 import imgs from './../../assets/imgs/index';
 import Button from "..//ButtonWithRouter"
 
