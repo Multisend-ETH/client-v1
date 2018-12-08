@@ -3,7 +3,10 @@
     height: 6em;
     align-items: center;
     width: 100%;
-    justify-content: space-between
+    justify-content: space-between;
+    padding-top: 2em;
+    line-height: 2em;
+    margin-bottom: 4em;
 }
 
 .footer > ul > li{
