@@ -1,0 +1,8 @@
+{
+    "alias": "multisend.co",
+    "static": {
+        "rewrites": [
+            { "source": "**", "destination": "/index.html" }
+        ]
+    }
+}
