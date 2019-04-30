@@ -9,7 +9,7 @@ export default () => (
         <ul>
             <li><a target="_blank" rel="noopener noreferrer" href="https://t.me/eltneg">Telegram</a></li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://slack.com">Slack</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/eltneg">Github</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/Multisend-ETH/client-v1">Github</a></li>
         </ul>
     </footer>
 )
