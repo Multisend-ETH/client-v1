@@ -26,8 +26,20 @@ const enableMetamask = async () => {
         const acct = await getcurrAcct();
         return acct;
       })
-      .catch(() => false);
+      .catch(() => console.log("user denied this")
+       );
   }
+  else{
+    return null
+  }
+
+};
+
+const checkMetamask = async () => {
+  if (!window.ethereum) {
+    return false;
+  }
+
 };
 
 const getcurrAcct = () => {
@@ -194,7 +206,8 @@ const ethApi = {
   bulkSendToken,
   getTokenSymbol,
   enableMetamask,
-  getcurrAcct
+  getcurrAcct,
+  checkMetamask
 };
 
 export default ethApi;
