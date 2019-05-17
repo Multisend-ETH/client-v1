@@ -1,12 +1,13 @@
 .step {
     width: 250px;
     padding: 5px;
+    text-align: center;
 }
 
 .steps > h3 {
     width: 100%;
     text-align: center;
-    margin-bottom: -0.4em;
+    /* margin-bottom: -0.4em; */ 
 }
 
 .step > p {
@@ -22,4 +23,11 @@
 .steps > div {
     width: 100%;
     justify-content: space-between;
+}
+.steps img{
+    margin: auto;
+    display: block;
+    height: 100px;
+    width: 100px;
+    margin-top: 20px;
 }
