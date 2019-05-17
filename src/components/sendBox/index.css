@@ -16,6 +16,25 @@
   font-size: 0.9em;
   margin-bottom: 2px;
 }
+.send{
+  /* overflow:hidden; */
+}
+
+@media only screen and (max-width: 480px) {
+  .mm-acct{
+   font-size: 13px;
+  }
+  .mm-tokenad{
+    width: 100% !important;
+  }
+  .amount-input{
+    width: 100px !important;
+    margin-left: 50px;
+  }
+  .mm-newAddress{
+    width: 180px !important;
+  }
+}
 
 .send-box .form {
   padding: 25px;
@@ -82,7 +101,7 @@
 }
 
 .address-amount > :nth-child(3) {
-  width: 30%;
+  /* width: 30%; */
   margin-left: 2%;
   justify-content: space-around;
 }
