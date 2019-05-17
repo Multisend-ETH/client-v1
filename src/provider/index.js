@@ -14,6 +14,7 @@ export default class Provider extends React.Component {
       tokenAddress: "",
       selected: "ethereum",
       url: "",
+      auth: false,
       loading: false,
       amount: [],
       addresses: [],
