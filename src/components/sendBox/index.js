@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.css";
-// import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import ethApi from "./../../utils/contractCall/index";
 import { withContext } from "./../../provider/index";
 
@@ -41,6 +41,7 @@ class SendBox extends React.Component {
     ethApi
       .getcurrAcct()
       .then(act => this.props.ctx.handleChange("metamaskAddress", act));
+      
   };
 
   setToken = () => {
@@ -107,9 +108,9 @@ class SendBox extends React.Component {
     let hideToken, hideEthCol, hideTokenCol, tokenSym, btnText, disabled;
     const props = this.props;
     const { ctx } = props;
-    // if (!ctx.metamaskAddress) {
-    //   return <Redirect to="/connect" />;
-    // }
+    if (ctx.metamaskAddress === null) {
+      return (<Redirect to="/connect" />);
+    }
 
     if (ctx.selected === "ethereum") {
       hideToken = "hidden";
@@ -130,8 +131,8 @@ class SendBox extends React.Component {
     return (
       <div className="board shadowize send-box">
         <div>
-          <div className="mm-font">Metamask</div>
-          <div>{ctx.metamaskAddress}</div>
+          <div className="mm-font">Account</div>
+          <div className="mm-acct">{ctx.metamaskAddress}</div>
         </div>
         <div className="form">
           <div className="row">
@@ -167,7 +168,7 @@ class SendBox extends React.Component {
               }
               ctx.handleChange(e.target.name, e.target.value);
             }}
-            className={`${hideToken}`}
+            className={`${hideToken} mm-tokenad`}
             placeholder="Enter token contract address"
             name="tokenAddress"
           />
@@ -177,6 +178,7 @@ class SendBox extends React.Component {
               <input
                 name="newAddress"
                 value={ctx.newAddress}
+                className={`mm-newAddress`}
                 onChange={e => {
                   ctx.handleChange(e.target.name, e.target.value);
                 }}
