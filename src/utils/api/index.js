@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const baseUrl = "https://multisend-backend-tcbhbzpkes.now.sh/api";
-// const baseUrl = "http://localhost:5000/api";
 
 const getFromGSheet = async url => {
   //const res =  {addresses:['a','b','c'], amount: [1,2,3]}
