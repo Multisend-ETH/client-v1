@@ -76,6 +76,11 @@
     -webkit-box-shadow: 0 2px 4px 0 rgba(245, 132, 31, 0.3);
 }
 
+a.app-link{
+    display: inline;
+    text-decoration: underline;
+}
+
 /* Chrome 29+ */
 @media screen and (-webkit-min-device-pixel-ratio:0)
 and (min-resolution:.001dpcm) {
