@@ -184,3 +184,29 @@
   color: #1f2023 !important;
   box-shadow: none;
 }
+
+.tip-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+}
+
+.tip-container input.tip-check{
+  width: 3%;
+}
+
+.tip-container span.tip-text {
+  display: inline-flex;
+  align-items: center;
+  width: 44%;
+  padding-top: 5px;
+}
+
+.tip-container span.tip-text span {
+  margin: 0 5px;
+  color: #1bbf0d;
+}
+.tip-container input.tip-input {
+  width: 15%
+}

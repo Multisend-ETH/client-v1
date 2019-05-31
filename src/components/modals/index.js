@@ -2,6 +2,7 @@ import React from "react";
 import ConfirmTxn from "./confirmTxn";
 import GoogleSheetImporter from "./gsImport";
 import SuccessBox from "./successTxn";
+import ErrorModal from "./errorModal";
 import "./index.css";
 import { withContext } from './../../provider/index';
 
@@ -37,8 +38,11 @@ class Modals extends React.Component {
       case "success":
         Modal = SuccessBox;
         break;
+      case "error":
+        Modal = ErrorModal
+        break;
       default:
-        Modal = () => <div />;
+        Modal = () => <React.Fragment />;
         hide = "hidden";
     }
     return (

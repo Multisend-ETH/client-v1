@@ -131,3 +131,45 @@
     font-size: 15px !important;
     margin-bottom: 10px;
 }
+
+.gs-modal.success-txn.error-msg-modal{
+  height: 250px;
+  padding: 0;
+  text-align: center;
+}
+.gs-modal.success-txn.error-msg-modal img{
+  padding: 0;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 1rem auto;
+}
+
+.gs-modal.success-txn.error-msg-modal > div{
+  margin: -26px 0 40px 0;
+  color: #D75A4B;
+}
+.gs-modal.success-txn.error-msg-modal div.err-msg{
+  margin: -35px 0 2rem 0;
+  height: 2rem;
+  text-align: left;
+  padding: 0 1em;
+  color: #6e6e6e;
+}
+.gs-modal.success-txn.error-msg-modal button{
+  width: 5rem;
+  height: 2.5rem;
+  margin: 0 1rem 0 0;
+  margin-left: auto;
+  float: right;
+  color: #fff;
+}
+
+.gs-modal.success-txn.error-msg-modal a {
+  display: inline;
+  color: #6e6e6e;
+  text-decoration: underline;
+}
+
+.gs-modal.success-txn.error-msg-modal span{
+  margin-left: 1rem;
+}

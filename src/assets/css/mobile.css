@@ -5,6 +5,7 @@
 
   body {
     overflow-x: hidden !important;
+    padding: 0.1px
   }
   .intro {
     justify-content: center !important;
@@ -166,7 +167,6 @@
   .intro > :nth-child(2) > img {
     float: none !important;
     width: 100% !important;
-    
   }
   .intro > :nth-child(2) {
     width: 100% !important;
@@ -183,5 +183,43 @@
 
   .intro > :nth-child(3) > div input {
     width: 240px !important;
+  }
+
+  .send-box .flex-container label.row {
+    display: none;
+  }
+  .address-amount .flex-container {
+    margin-top: 1.5em;
+    width: 100%;
+  }
+  div.tip-container span.tip-text {
+    width: 65%;
+    font-size: 0.8em;
+  }
+  div.tip-container input.tip-input {
+    width: 26%;
+  }
+  div.address-table > .th > :nth-child(1) {
+    min-width: 0;
+  }
+  div.address-table {
+    margin-top: 0;
+    height: 120px;
+  }
+  .address-table > .tb .tr {
+    height: 2em;
+    padding: 0.2em 0em;
+    font-size: 11px;
+  }
+  div.send-box{
+    margin: 1rem 0 0 0;
+  }
+
+  div.footer-send > span {
+    font-size: 0.6rem;
+  }
+  div.gs-modal {
+    height: 240px;
+    width: 97%;
   }
 }
