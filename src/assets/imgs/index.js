@@ -6,6 +6,10 @@ import multisendWithIcon from './logo.svg'
 import miniMultisend from './header-left.png'
 import rightBars from './Group 5.svg'
 import metamask from './metamask.svg'
+import link from "./../../assets/imgs/link.svg";
+import add from "./../../assets/imgs/add.svg";
+import send from "./../../assets/imgs/send.svg";
+import error from "./error.svg";
 
 const imgs = {
     btcaddr,
@@ -15,7 +19,11 @@ const imgs = {
     multisendWithIcon,
     miniMultisend,
     rightBars,
-    metamask
+    metamask,
+    link,
+    add,
+    send,
+    error
 }
 
 export default imgs;
