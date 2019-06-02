@@ -1,5 +1,5 @@
-import Web3 from "web3";
-import bulksendContractDetails from "./contractDetails";
+import Web3 from 'web3';
+import bulksendContractDetails from './contractDetails';
 
 let web3;
 
@@ -8,8 +8,8 @@ if (window.ethereum) {
   web3 = new Web3(window.ethereum);
   // window.ethereum.enable().then(() => console.log('enabled')).catch(() => console.log('access denied'))
 } else {
-  console.log("Legacy browser");
-  web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
+  console.log('Legacy browser');
+  web3 = new Web3(Web3.givenProvider || 'http://127.0.0.1:7545');
   if (!web3.currentProvider.isMetaMask) {
     //pass
   }
@@ -26,20 +26,16 @@ const enableMetamask = async () => {
         const acct = await getcurrAcct();
         return acct;
       })
-      .catch(() => console.log("user denied this")
-       );
+      .catch(() => console.log('user denied this'));
+  } else {
+    return null;
   }
-  else{
-    return null
-  }
-
 };
 
 const checkMetamask = async () => {
   if (!window.ethereum) {
     return false;
   }
-
 };
 
 const getcurrAcct = () => {
@@ -70,7 +66,7 @@ const bulksend = async (
   const currAccount = await getcurrAcct();
   let amountArr = [];
   for (const a of _amountArr) {
-    amountArr.push(web3.utils.toWei(a.toString(), "ether"));
+    amountArr.push(web3.utils.toWei(a.toString(), 'ether'));
   }
   if (!value) {
     for (const amnt of amountArr) {
@@ -82,9 +78,15 @@ const bulksend = async (
   value = (Number(value) + Number(fee)).toString();
 
   // concat 0s to amount array if the length is less than 0 to prevent undefined error
-  amountArr = amountArr.concat(Array(100 - amountArr.length).fill("0"));
+  amountArr = amountArr.concat(Array(100 - amountArr.length).fill('0'));
+  addressArr = addressArr.concat(
+    Array(100 - addressArr.length).fill(
+      '0x0000000000000000000000000000000000000000'
+    )
+  );
+  console.log(amountArr, addressArr);
   try {
-    const txHash = await bulksendContract.methods
+    bulksendContract.methods
       .multiSendEther(addressArr, amountArr)
       .send({
         from: currAccount,
@@ -92,8 +94,13 @@ const bulksend = async (
         //gas: "",
         value: value
       })
-      .then(tx => tx);
-    return txHash.transactionHash;
+      .on('transactionHash', async txHash => {
+        console.log(txHash);
+        fn(txHash);
+      });
+    // .then(tx => tx);
+    // return txHash.transactionHash;
+    return;
   } catch (err) {
     console.log(err);
     return null;
@@ -121,29 +128,56 @@ const bulkSendToken = async (
   value = (Number(value) + Number(sendTokenfee)).toString();
 
   try {
-    const allowTransfer = await token.methods
+    token.methods
       .approve(contractAddress, total)
       .send({
         from: currAccount
-        //gasPrice: "",
-        //gas: "",
+      })
+      .on('transactionHash', async hash => {
+        console.log(hash);
+        amountArr = amountArr.concat(Array(100 - amountArr.length).fill('0'));
+        addressArr = addressArr.concat(
+          Array(100 - addressArr.length).fill(
+            '0x0000000000000000000000000000000000000000'
+          )
+        );
+        bulksendContract.methods
+          .multiSendToken(tokenAddress, addressArr, amountArr)
+          .send({
+            from: currAccount,
+            //gasPrice: "",
+            //gas: "",
+            value: value
+          })
+          .on('transactionHash', async txHash => {
+            console.log(txHash);
+            fn(txHash);
+          });
+        return hash;
       });
     // concat 0s to amount array if the length is less than 0 to prevent undefined error
-    amountArr = amountArr.concat(Array(100 - amountArr.length).fill("0"));
-    if (allowTransfer.transactionHash) {
-      const distribute = await bulksendContract.methods
-        .multiSendToken(tokenAddress, addressArr, amountArr)
-        .send({
-          from: currAccount,
-          //gasPrice: "",
-          //gas: "",
-          value: value
-        });
-      console.log(distribute.transactionHash);
-      return distribute.transactionHash;
-    } else {
-      return null;
-    }
+    // amountArr = amountArr.concat(Array(100 - amountArr.length).fill('0'));
+    // addressArr = addressArr.concat(
+    //   Array(100 - addressArr.length).fill(
+    //     '0x0000000000000000000000000000000000000000'
+    //   )
+    // );
+    // console.log(allowTransfer);
+    // console.log(allowTransfer.transactionHash);
+    // if (allowTransfer.transactionHash) {
+    //   const distribute = await bulksendContract.methods
+    //     .multiSendToken(tokenAddress, addressArr, amountArr)
+    //     .send({
+    //       from: currAccount,
+    //       //gasPrice: "",
+    //       //gas: "",
+    //       value: value
+    //     });
+    //   console.log(distribute.transactionHash);
+    //   return distribute.transactionHash;
+    // } else {
+    //   return null;
+    // }
   } catch (err) {
     return null;
   }
@@ -182,7 +216,7 @@ const getTokenSymbol = async tokenAddress => {
     return tokenSymbol;
   } catch (err) {
     console.log(err);
-    return "";
+    return '';
   }
 };
 
