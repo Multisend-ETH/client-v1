@@ -24,16 +24,24 @@ const enableMetamask = async () => {
         const acct = await getcurrAcct();
         return acct;
       })
-      .catch(() => console.log('user denied this'));
-  } else {
-    return null;
+      .catch(() => console.log("user denied this")
+       );
   }
+  else{
+    return null
+  }
+
 };
 
 const checkMetamask = async () => {
   if (!window.ethereum) {
     return false;
   }
+
+};
+
+const getNetwork = async () => {
+  return web3.eth.net.getNetworkType()
 };
 
 const getcurrAcct = () => {
@@ -173,7 +181,8 @@ const ethApi = {
   getTokenSymbol,
   enableMetamask,
   getcurrAcct,
-  checkMetamask
+  checkMetamask,
+  getNetwork
 };
 
 export default ethApi;
