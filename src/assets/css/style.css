@@ -182,7 +182,6 @@ p {
 }
 
 .send header ul,
-.send header button,
 .connect header ul,
 .connect header button {
   visibility: hidden;
