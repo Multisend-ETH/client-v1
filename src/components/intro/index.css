@@ -1,6 +1,5 @@
 .intro {
   margin-top: 3em;
-  /* position: relative; */
 }
 .intro > :nth-child(1) {
   width: 50%;
@@ -11,7 +10,6 @@
   max-width: 420px;
   text-align: left;
   font-weight: 500;
-  /* text-justify: inter-word; */
 }
 
 .intro > :nth-child(1) > p {
@@ -108,7 +106,6 @@
   position: absolute;
   height: 400px;
   width: 200px;
-  /* border: 1px green solid; */
   overflow: hidden;
 }
 
@@ -123,7 +120,6 @@
   margin-right: 0em;
   top: 2em;
   right: 0;
-  /* background-image: url("../../assets/imgs/Group 5.svg") */
 }
 
 .left-bars > img {
@@ -137,5 +133,4 @@
   margin-left: 0em;
   top: 13em;
   left: -1em;
-  /* background-image: url("../../assets/imgs/Group 5.svg") */
 }

@@ -4,9 +4,7 @@ import bulksendContractDetails from './contractDetails';
 let web3;
 
 if (window.ethereum) {
-  // console.log("ethereum found");
   web3 = new Web3(window.ethereum);
-  // window.ethereum.enable().then(() => console.log('enabled')).catch(() => console.log('access denied'))
 } else {
   console.log('Legacy browser');
   web3 = new Web3(Web3.givenProvider || 'http://127.0.0.1:7545');
@@ -90,16 +88,12 @@ const bulksend = async (
       .multiSendEther(addressArr, amountArr)
       .send({
         from: currAccount,
-        //gasPrice: "",
-        //gas: "",
         value: value
       })
       .on('transactionHash', async txHash => {
         console.log(txHash);
         fn(txHash);
       });
-    // .then(tx => tx);
-    // return txHash.transactionHash;
     return;
   } catch (err) {
     console.log(err);
@@ -145,8 +139,6 @@ const bulkSendToken = async (
           .multiSendToken(tokenAddress, addressArr, amountArr)
           .send({
             from: currAccount,
-            //gasPrice: "",
-            //gas: "",
             value: value
           })
           .on('transactionHash', async txHash => {
@@ -155,55 +147,9 @@ const bulkSendToken = async (
           });
         return hash;
       });
-    // concat 0s to amount array if the length is less than 0 to prevent undefined error
-    // amountArr = amountArr.concat(Array(100 - amountArr.length).fill('0'));
-    // addressArr = addressArr.concat(
-    //   Array(100 - addressArr.length).fill(
-    //     '0x0000000000000000000000000000000000000000'
-    //   )
-    // );
-    // console.log(allowTransfer);
-    // console.log(allowTransfer.transactionHash);
-    // if (allowTransfer.transactionHash) {
-    //   const distribute = await bulksendContract.methods
-    //     .multiSendToken(tokenAddress, addressArr, amountArr)
-    //     .send({
-    //       from: currAccount,
-    //       //gasPrice: "",
-    //       //gas: "",
-    //       value: value
-    //     });
-    //   console.log(distribute.transactionHash);
-    //   return distribute.transactionHash;
-    // } else {
-    //   return null;
-    // }
   } catch (err) {
     return null;
   }
-  // token.methods
-  //   .approve(contractAddress, total)
-  //   .send({
-  //     from: currAccount
-  //     //gasPrice: "",
-  //     //gas: "",
-  //   })
-  //   .then(res => {
-  //     if (res.transactionHash) {
-  //       bulksendContract.methods
-  //         .bulkSendToken(tokenAddress, addressArr, amountArr)
-  //         .send({
-  //           from: currAccount,
-  //           //gasPrice: "",
-  //           //gas: "",
-  //           value: value
-  //         })
-  //         //.catch(e => console.log(e))
-  //         .on("transactionHash", hash => fn(hash))
-  //         .on("receipt", receipt => console.log(`receipt => ${receipt}`));
-  //     }
-  //   })
-  //   .catch(err => err);
 };
 
 const getTokenSymbol = async tokenAddress => {
@@ -219,20 +165,6 @@ const getTokenSymbol = async tokenAddress => {
     return '';
   }
 };
-
-// ============================================
-// const acct = require('web3-eth-accounts');
-// // const Account = web3.eth.accounts("wss://ropsten.infura.io/ws")
-// // const accts = new acct("wss://ropsten.infura.io/ws")
-// const a = web3.eth.accounts.create()
-// bulksendContract.methods
-// .getbalance(contractAddress)
-// .call({ from: a.address })
-// .then(bal => console.log(bal));
-// console.log(a.address)
-// web3.eth.getAccounts().then(acct => console.log(acct))
-
-//=========================================
 
 const ethApi = {
   bulksend,

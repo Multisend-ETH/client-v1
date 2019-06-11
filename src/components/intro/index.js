@@ -32,7 +32,6 @@ export default withContext(({ ctx }) => (
       }
     </div>
     <div>
-      {/* <div className="shadowize board" /> */}
       <img src={imgs.miniMultisend} alt="mini-multisend" />
     </div>
     <div>
