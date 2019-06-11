@@ -41,7 +41,12 @@ class SendBox extends React.Component {
     ethApi
       .getcurrAcct()
       .then(act => this.props.ctx.handleChange('metamaskAddress', act));
+
+      // detect network and save to state
+    ethApi.getNetwork()
+    .then(net => this.props.ctx.handleChange('network', net));
   };
+
 
   setToken = () => {
     const { ctx } = this.props;

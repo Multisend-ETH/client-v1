@@ -18,6 +18,20 @@
     font-weight: 500;
     font-size: 18px;
 }
+.top-bar .testnet{
+    background: none;
+    border: 1.5px solid #f90404;
+    box-shadow: none;
+    color: #000;
+    cursor: initial
+}
+.top-bar .livenet{
+    background: none;
+    border: 1.5px solid #1bbf0d;
+    box-shadow: none;
+    color: #000;
+    cursor: initial
+}
 
 .top-bar > ul {
     margin: 0 auto;

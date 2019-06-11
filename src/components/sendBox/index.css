@@ -16,6 +16,25 @@
   font-size: 0.9em;
   margin-bottom: 2px;
 }
+.send{
+  /* overflow:hidden; */
+}
+
+@media only screen and (max-width: 480px) {
+  .mm-acct{
+   font-size: 13px;
+  }
+  .mm-tokenad{
+    width: 100% !important;
+  }
+  .amount-input{
+    width: 100px !important;
+    margin-left: 50px;
+  }
+  .mm-newAddress{
+    width: 180px !important;
+  }
+}
 
 @media only screen and (max-width: 480px) {
   .mm-acct{
@@ -207,20 +226,4 @@
 }
 .tip-container input.tip-input {
   width: 15%
-}
-
-.tip-coin-text {
-  border: 1px solid #6e6e6e;
-  width: 2.5em;
-  text-align: center;
-  color: #6e6e6e;
-  border-radius: 3px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.tip-coin-text.selected-tip {
-  border: 1px solid #1bbf0d;
-  color: #ffffff;
-  background-color: #1bbf0d;
 }
