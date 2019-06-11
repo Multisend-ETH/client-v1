@@ -20,7 +20,6 @@ class Modals extends React.Component {
     if(this.props.ctx.modalName){
       if (!this.node.contains(event.target)) {
         this.props.ctx.closeModal()
-        // ctx.handleChange("openModal", false);
       }
     }
   };
