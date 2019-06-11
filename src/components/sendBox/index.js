@@ -121,11 +121,6 @@ class SendBox extends React.Component {
         );
         ctx.handleChange('modalName', 'error');
       }
-      // if (txHash) {
-      //   console.log(txHash);
-      //   ctx.handleChange('txHash', txHash);
-      //   ctx.handleChange('modalName', 'success');
-      // }
       ctx.handleChange('sending', false);
     }
   };
@@ -270,11 +265,6 @@ class SendBox extends React.Component {
               <span>Amount</span>
             </div>
             <div className="tb">
-              {/* <div className="tr">
-                <span>0x01FD2b8c9C81044D37352704F1ce9adA7E1b6AE2</span>
-                <span>0.02</span>
-                <button>X</button>
-              </div> */}
               {this.renderTableRows()}
             </div>
           </div>
