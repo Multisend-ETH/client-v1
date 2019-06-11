@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "alias": "test-multisend",
+    "alias": "test.multisend.co",
     "routes": [
       {
         "src": "/static/(.*)",
