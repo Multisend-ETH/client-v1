@@ -79,7 +79,6 @@ class SendBox extends React.Component {
 
   handleSend = async e => {
     e.preventDefault();
-    let txHash;
     const { ctx } = this.props;
     if (ctx.addresses.length === ctx.amounts.length && ctx.amounts.length > 0) {
       const { addresses, amounts } = ctx;
@@ -93,13 +92,26 @@ class SendBox extends React.Component {
       try {
         if (ctx.selected === 'token' && ctx.tokenAddress) {
           const tokenAddress = ctx.tokenAddress;
-          txHash = await ethApi.bulkSendToken(
+          await ethApi.bulkSendToken(
             tokenAddress,
             addressesList,
-            amountsList
+            amountsList,
+            0,
+            txHash => {
+              ctx.handleChange('txHash', txHash);
+              ctx.handleChange('modalName', 'success');
+            }
           );
         } else {
-          txHash = await ethApi.bulksend(addressesList, amountsList);
+          await ethApi.bulksend(
+            addressesList,
+            amountsList,
+            0,
+            txHash => {
+              ctx.handleChange('txHash', txHash);
+              ctx.handleChange('modalName', 'success');
+            }
+          );
         }
       } catch (err) {
         console.log(err.message);
@@ -109,11 +121,11 @@ class SendBox extends React.Component {
         );
         ctx.handleChange('modalName', 'error');
       }
-      if (txHash) {
-        console.log(txHash);
-        ctx.handleChange('txHash', txHash);
-        ctx.handleChange('modalName', 'success');
-      }
+      // if (txHash) {
+      //   console.log(txHash);
+      //   ctx.handleChange('txHash', txHash);
+      //   ctx.handleChange('modalName', 'success');
+      // }
       ctx.handleChange('sending', false);
     }
   };
