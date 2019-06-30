@@ -81,7 +81,7 @@ const bulksend = async (
   }
   console.log(value);
   const fee = await bulksendContract.methods.sendEthFee().call();
-  value = (Number(value) + Number(fee)).toString();
+  value = (Number(Number(value) + Number(fee))).toString();
 
   // concat 0s to amount array if the length is less than 0 to prevent undefined error
   amountArr = amountArr.concat(Array(100 - amountArr.length).fill('0'));
@@ -90,7 +90,6 @@ const bulksend = async (
       '0x0000000000000000000000000000000000000000'
     )
   );
-  console.log(amountArr, addressArr);
   try {
     bulksendContract.methods
       .multiSendEther(addressArr, amountArr)
@@ -128,7 +127,7 @@ const bulkSendToken = async (
   }
 
   value = (Number(value) + Number(sendTokenfee)).toString();
-
+  total = total.toString()
   try {
     token.methods
       .approve(contractAddress, total)
