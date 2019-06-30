@@ -35,10 +35,15 @@ export default withContext(({ Ref, ctx }) => {
                   if (res.addresses && res.amounts) {
                     ctx.handleChange("addresses", res.addresses);
                     ctx.handleChange("amounts", res.amounts);
+                    ctx.handleChange("modalName", "")
+                  }else{
+                    console.log(res)
+                    ctx.handleChange("errorMessage", "Cannot find 'ADDRESSES' and 'AMOUNTS' column in the google sheet.")
+                    ctx.handleChange("modalName", "error")
                   }
                   ctx.handleChange("url", "");
                   ctx.handleChange("loading", false);
-                });
+                }).catch(err => console.log(err.message));
               }
             }}
             className="ms-btn"

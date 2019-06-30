@@ -1,14 +1,14 @@
-import React from "react";
-import "./index.css";
-// import { Redirect } from "react-router-dom";
-import ethApi from "./../../utils/contractCall/index";
-import { withContext } from "./../../provider/index";
+import React from 'react';
+import './index.css';
+import { Redirect } from 'react-router-dom';
+import ethApi from './../../utils/contractCall/index';
+import { withContext } from './../../provider/index';
 
 class SendBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      coin: "eth"
+      coin: 'eth'
     };
   }
 
@@ -27,8 +27,8 @@ class SendBox extends React.Component {
             amounts = ctx.amounts;
             addresses.splice(index, 1);
             amounts.splice(index, 1);
-            ctx.handleChange("addresses", addresses);
-            ctx.handleChange("amounts", amounts);
+            ctx.handleChange('addresses', addresses);
+            ctx.handleChange('amounts', amounts);
           }}
         >
           x
@@ -40,20 +40,25 @@ class SendBox extends React.Component {
   componentWillMount = () => {
     ethApi
       .getcurrAcct()
-      .then(act => this.props.ctx.handleChange("metamaskAddress", act));
+      .then(act => this.props.ctx.handleChange('metamaskAddress', act));
+
+      // detect network and save to state
+    ethApi.getNetwork()
+    .then(net => this.props.ctx.handleChange('network', net));
   };
+
 
   setToken = () => {
     const { ctx } = this.props;
-    if (ctx.selected !== "token") {
-      ctx.handleChange("selected", "token");
+    if (ctx.selected !== 'token') {
+      ctx.handleChange('selected', 'token');
     }
   };
 
   setEth = () => {
     const { ctx } = this.props;
-    if (ctx.selected !== "ethereum") {
-      ctx.handleChange("selected", "ethereum");
+    if (ctx.selected !== 'ethereum') {
+      ctx.handleChange('selected', 'ethereum');
     }
   };
 
@@ -62,44 +67,66 @@ class SendBox extends React.Component {
     if (!ctx.newAddress || !ctx.newAmount || ctx.addNew <= 0) {
       return;
     }
-    if(!ctx.newAddress.startsWith("0x") || ctx.newAddress.length < 42 ){
+    if (!ctx.newAddress.startsWith('0x') || ctx.newAddress.length < 42) {
       return;
     }
-    ctx.handleAdd("addresses", ctx.newAddress);
-    ctx.handleAdd("amounts", ctx.newAmount);
-    ctx.handleChange("newAmount", "");
-    ctx.handleChange("newAddress", "");
+    ctx.handleAdd('addresses', ctx.newAddress);
+    ctx.handleAdd('amounts', ctx.newAmount);
+    ctx.handleChange('newAmount', '');
+    ctx.handleChange('newAddress', '');
     return;
   };
 
   openImportModal = () => {
     const { ctx } = this.props;
-    ctx.handleChange("modalName", "gsheet");
+    ctx.handleChange('modalName', 'gsheet');
   };
 
   handleSend = async e => {
     e.preventDefault();
-    let txHash;
     const { ctx } = this.props;
     if (ctx.addresses.length === ctx.amounts.length && ctx.amounts.length > 0) {
       const { addresses, amounts } = ctx;
-      ctx.handleChange("sending", true);
+      const addressesList = [...addresses];
+      const amountsList = [...amounts];
+      if (ctx.tip) {
+        addressesList.push(ctx.tipAddress);
+        amountsList.push(ctx.tipAmount);
+      }
+      ctx.handleChange('sending', true);
       try {
-        if (ctx.selected === "token" && ctx.tokenAddress) {
+        if (ctx.selected === 'token' && ctx.tokenAddress) {
           const tokenAddress = ctx.tokenAddress;
-          txHash = await ethApi.bulkSendToken(tokenAddress, addresses, amounts);
+          await ethApi.bulkSendToken(
+            tokenAddress,
+            addressesList,
+            amountsList,
+            0,
+            txHash => {
+              ctx.handleChange('txHash', txHash);
+              ctx.handleChange('modalName', 'success');
+            }
+          );
         } else {
-          txHash = await ethApi.bulksend(addresses, amounts);
+          await ethApi.bulksend(
+            addressesList,
+            amountsList,
+            0,
+            txHash => {
+              ctx.handleChange('txHash', txHash);
+              ctx.handleChange('modalName', 'success');
+            }
+          );
         }
       } catch (err) {
-        console.log(err);
+        console.log(err.message);
+        ctx.handleChange(
+          'errorMessage',
+          'Please, ensure your are connected to the correct ethereum network. Also verify your token contract address if you are trying to distribute tokens.'
+        );
+        ctx.handleChange('modalName', 'error');
       }
-      if (txHash) {
-        console.log(txHash);
-        ctx.handleChange("txHash", txHash);
-        ctx.handleChange("modalName", "success");
-      }
-      ctx.handleChange("sending", false);
+      ctx.handleChange('sending', false);
     }
   };
 
@@ -107,31 +134,31 @@ class SendBox extends React.Component {
     let hideToken, hideEthCol, hideTokenCol, tokenSym, btnText, disabled;
     const props = this.props;
     const { ctx } = props;
-    // if (!ctx.metamaskAddress) {
-    //   return <Redirect to="/connect" />;
-    // }
+    if (ctx.metamaskAddress === null) {
+      return <Redirect to="/connect" />;
+    }
 
-    if (ctx.selected === "ethereum") {
-      hideToken = "hidden";
-      hideTokenCol = "strip-away";
-      tokenSym = "ETH";
+    if (ctx.selected === 'ethereum') {
+      hideToken = 'hidden';
+      hideTokenCol = 'strip-away';
+      tokenSym = 'ETH';
     } else {
-      hideEthCol = "strip-away";
-      tokenSym = ctx.tokenSymbol || "tokens";
+      hideEthCol = 'strip-away';
+      tokenSym = ctx.tokenSymbol || 'tokens';
     }
 
     if (ctx.sending) {
-      btnText = "Sending...";
+      btnText = 'Sending...';
       disabled = true;
     } else {
-      btnText = "Send";
+      btnText = 'Send';
     }
 
     return (
       <div className="board shadowize send-box">
         <div>
-          <div className="mm-font">Metamask</div>
-          <div>{ctx.metamaskAddress}</div>
+          <div className="mm-font">Account</div>
+          <div className="mm-acct">{ctx.metamaskAddress}</div>
         </div>
         <div className="form">
           <div className="row">
@@ -158,16 +185,17 @@ class SendBox extends React.Component {
                   console.log(e.target.value);
                   ethApi.getTokenSymbol(e.target.value).then(res => {
                     if (res) {
-                      ctx.handleChange("tokenSymbol", res);
+                      ctx.handleChange('tokenSymbol', res);
                     }
                   });
                 } catch (err) {
+                  console.log("token name error ", err)
                   return;
                 }
               }
-              ctx.handleChange(e.target.name, e.target.value);
+              ctx.handleChange(e.target.name, e.target.value.trim());
             }}
-            className={`${hideToken}`}
+            className={`${hideToken} mm-tokenad`}
             placeholder="Enter token contract address"
             name="tokenAddress"
           />
@@ -177,8 +205,9 @@ class SendBox extends React.Component {
               <input
                 name="newAddress"
                 value={ctx.newAddress}
+                className={`mm-newAddress`}
                 onChange={e => {
-                  ctx.handleChange(e.target.name, e.target.value);
+                  ctx.handleChange(e.target.name, e.target.value.trim());
                 }}
                 placeholder="0x..."
               />
@@ -197,7 +226,7 @@ class SendBox extends React.Component {
               />
             </div>
             <div className="flex-container">
-              <label className="row">{"."}</label>
+              <label className="row">{'.'}</label>
               <button
                 onClick={this.addNew}
                 className="ms-btn wt-icon ms-green-bg"
@@ -212,17 +241,36 @@ class SendBox extends React.Component {
               </button>
             </div>
           </div>
+          <div className="tip-container">
+            <input
+              className="tip-check"
+              name="tip"
+              checked={ctx.tip}
+              onChange={e => {
+                ctx.handleChange(e.target.name, !ctx.tip);
+              }}
+              type="checkbox"
+            />{' '}
+            <span className="tip-text">
+              Donate <span>{tokenSym}</span> to multisend
+            </span>{' '}
+            <input
+              className="tip-input"
+              name="tipAmount"
+              type="number"
+              onChange={e => {
+                ctx.handleChange(e.target.name, e.target.value);
+              }}
+              value={ctx.tipAmount}
+              placeholder="0.0"
+            />
+          </div>
           <div className="address-table">
             <div className="th">
               <span>Address</span>
               <span>Amount</span>
             </div>
             <div className="tb">
-              {/* <div className="tr">
-                <span>0x01FD2b8c9C81044D37352704F1ce9adA7E1b6AE2</span>
-                <span>0.02</span>
-                <button>X</button>
-              </div> */}
               {this.renderTableRows()}
             </div>
           </div>
@@ -234,10 +282,17 @@ class SendBox extends React.Component {
             >
               {btnText}
             </button>
-            <span>{`${ctx.amounts
-              .reduce((a, b) => Number(a) + Number(b), 0)
-              .toFixed(4)} ${tokenSym} to ${
-              ctx.addresses.length
+            <span>{`${
+              ctx.tip
+                ? (
+                    ctx.amounts.reduce((a, b) => Number(a) + Number(b), 0) +
+                    Number(ctx.tipAmount)
+                  ).toFixed(4)
+                : ctx.amounts
+                    .reduce((a, b) => Number(a) + Number(b), 0)
+                    .toFixed(4)
+            } ${tokenSym} to ${
+              ctx.tip ? ctx.addresses.length + 1 : ctx.addresses.length
             } addresses`}</span>
           </div>
         </div>

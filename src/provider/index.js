@@ -14,6 +14,7 @@ export default class Provider extends React.Component {
       tokenAddress: "",
       selected: "ethereum",
       url: "",
+      auth: false,
       loading: false,
       amount: [],
       addresses: [],
@@ -24,6 +25,11 @@ export default class Provider extends React.Component {
       sending: false,
       tokenSymbol: "",
       modalName: "",
+      errorMessage: "",
+      network: "",
+      tipAddress: "0x0663dC599539F98F4b319fA3ceED721D63DecA7c",
+      tipAmount: "0",
+      tip: false,
       metamaskAddress: "",
 
       handleAdd: (key, val) => {

@@ -3,9 +3,10 @@ import "./index.css";
 import icons from "./../../assets/icons/index";
 import imgs from './../../assets/imgs/index';
 import { RightBars, LeftBars } from './bars';
-import Button from '../ButtonWithRouter'
+import Button from '../ButtonWithRouter';
+import { withContext } from "./../../provider/index";
 
-export default () => (
+export default withContext(({ ctx }) => (
   <section className="flex-container intro">
     <div>
       <h2>
@@ -18,12 +19,19 @@ export default () => (
         incredible amount of time, energy and money in distributing Ethereum
         assets.
       </p>
-      <Button to="/connect" customStyle="ms-btn wt-icon ms-green-bg">
+      {
+        ctx.auth ? (
+          <Button to="/send" customStyle="ms-btn wt-icon ms-green-bg">
         START SENDING <span className="send-arrow">↗</span>
       </Button>
+        ) : (
+          <Button to="/connect" customStyle="ms-btn wt-icon ms-green-bg">
+        START SENDING <span className="send-arrow">↗</span>
+      </Button>
+        )
+      }
     </div>
     <div>
-      {/* <div className="shadowize board" /> */}
       <img src={imgs.miniMultisend} alt="mini-multisend" />
     </div>
     <div>
@@ -40,4 +48,4 @@ export default () => (
     <RightBars />
     <LeftBars />
   </section>
-);
+));

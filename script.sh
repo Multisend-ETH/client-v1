@@ -1,4 +1,5 @@
 yarn build
 cp now.json build/now.json
 cd build
-now && now alias
+now && now --target production
+cd ..

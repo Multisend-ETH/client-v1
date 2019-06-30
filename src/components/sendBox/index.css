@@ -16,6 +16,44 @@
   font-size: 0.9em;
   margin-bottom: 2px;
 }
+.send{
+  /* overflow:hidden; */
+}
+
+@media only screen and (max-width: 480px) {
+  .mm-acct{
+   font-size: 13px;
+  }
+  .mm-tokenad{
+    width: 100% !important;
+  }
+  .amount-input{
+    width: 100px !important;
+    margin-left: 50px;
+  }
+  .mm-newAddress{
+    width: 180px !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .mm-acct{
+   font-size: 13px;
+  }
+  .mm-tokenad{
+    width: 100% !important;
+  }
+  .amount-input{
+    width: 100px !important;
+    margin-left: 50px;
+  }
+  .mm-newAddress{
+    width: 180px !important;
+  }
+  div.tip-container span.tip-text {
+    margin-left: 0;
+  }
+}
 
 .send-box .form {
   padding: 25px;
@@ -82,7 +120,7 @@
 }
 
 .address-amount > :nth-child(3) {
-  width: 30%;
+  /* width: 30%; */
   margin-left: 2%;
   justify-content: space-around;
 }
@@ -164,4 +202,33 @@
   background-color: #ffffff;
   color: #1f2023 !important;
   box-shadow: none;
+}
+
+.tip-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+}
+
+.tip-container input.tip-check{
+  width: .5rem;
+}
+
+.tip-container span.tip-text {
+  display: inline-flex;
+  align-items: center;
+  width: 43%;
+  padding-top: 5px;
+  color: #1bbf0d;
+  margin-left: 0.5rem;
+}
+
+.tip-container span.tip-text span {
+  cursor: pointer;
+  margin: 0 5px;
+  /* color: #1bbf0d; */
+}
+.tip-container input.tip-input {
+  width: 15%
 }
