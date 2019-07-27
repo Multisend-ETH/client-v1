@@ -21,7 +21,8 @@
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "publish": "yarn run build && now ./build --production && now alias"
+    "publish": "yarn run build && now ./build --production && now alias",
+    "publish:dev": "yarn run build && now ./build"
   },
   "browserslist": {
     "production": [
