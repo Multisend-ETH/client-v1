@@ -63,10 +63,11 @@ const getContractBal = async () => {
     .then(bal => console.log(bal));
 };
 
+const BN = web3.utils.BN;
 const bulksend = async (
   addressArr,
   _amountArr,
-  value = 0,
+  _value = 0,
   fn = console.log
 ) => {
   const currAccount = await getcurrAcct();
@@ -74,14 +75,13 @@ const bulksend = async (
   for (const a of _amountArr) {
     amountArr.push(web3.utils.toWei(a.toString(), 'ether'));
   }
-  if (!value) {
-    for (const amnt of amountArr) {
-      value += Number(amnt);
-    }
+  let value = new BN(_value)
+  for (const amnt of amountArr) {
+    value = value.add(new BN(amnt))
   }
-  console.log(value);
   const fee = await bulksendContract.methods.sendEthFee().call();
-  value = (Number(value) + Number(fee)).toString();
+  console.log("fee", fee)
+  value = (value.add(new BN(Number(fee)))).toString();
 
   // concat 0s to amount array if the length is less than 0 to prevent undefined error
   amountArr = amountArr.concat(Array(100 - amountArr.length).fill('0'));
@@ -109,26 +109,34 @@ const bulksend = async (
   }
 };
 
+const ten = new BN(10)
 const bulkSendToken = async (
   tokenAddress,
   addressArr,
   _amountArr,
-  value = 0,
+  _value = 0,
   fn = console.log
 ) => {
   const currAccount = await getcurrAcct();
   let amountArr = [];
-  let total = 0;
+  let total = new BN(0);
   const sendTokenfee = await bulksendContract.methods.sendTokenFee().call();
   const token = new web3.eth.Contract(TOKEN_ABI, tokenAddress);
-  const tokenDecimals = await token.methods.decimals().call();
+  const _tokenDecimals = await token.methods.decimals().call();
+  const tokenDecimals = new BN(Number(_tokenDecimals))
+  console.log(tokenDecimals)
   for (const a of _amountArr) {
-    total += Number(a) * 10 ** tokenDecimals;
-    amountArr.push((Number(a) * 10 ** tokenDecimals).toString());
+    console.log((Number(a) * 10**10).toString())
+    const _bigA = new BN((Number(a) * 10**10).toString())
+    const powTenA = _bigA.mul(ten.pow(tokenDecimals))
+    const bigA = powTenA.div(ten.pow(ten))
+    amountArr.push(bigA.toString());
+    total = total.add(bigA)
   }
-
-  value = (Number(value) + Number(sendTokenfee)).toString();
-
+  let value = new BN(_value)
+  value = (value.add(new BN(Number(sendTokenfee)))).toString()
+  total = total.toString()
+  console.log(total, value, amountArr)
   try {
     token.methods
       .approve(contractAddress, total)
