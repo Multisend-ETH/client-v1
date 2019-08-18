@@ -124,7 +124,6 @@ const bulkSendToken = async (
   const token = new web3.eth.Contract(TOKEN_ABI, tokenAddress);
   const _tokenDecimals = await token.methods.decimals().call();
   const tokenDecimals = new BN(Number(_tokenDecimals))
-  console.log(tokenDecimals)
   for (const a of _amountArr) {
     console.log((Number(a) * 10**10).toString())
     const _bigA = new BN((Number(a) * 10**10).toString())
@@ -135,11 +134,32 @@ const bulkSendToken = async (
   }
   let value = new BN(_value)
   value = (value.add(new BN(Number(sendTokenfee)))).toString()
-  total = total.toString()
-  console.log(total, value, amountArr)
+  const _total = total.toString()
+  
   try {
-    token.methods
-      .approve(contractAddress, total)
+    const _allowance = await token.methods.allowance(currAccount,contractAddress).call({from: currAccount})
+    const allowance = new BN(_allowance.toString())
+    console.log(allowance.gte(total), 't', _total, 'v', _allowance.toString())
+    if(allowance.gte(total)){
+      amountArr = amountArr.concat(Array(100 - amountArr.length).fill('0'));
+        addressArr = addressArr.concat(
+          Array(100 - addressArr.length).fill(
+            '0x0000000000000000000000000000000000000000'
+          )
+        );
+      bulksendContract.methods
+          .multiSendToken(tokenAddress, addressArr, amountArr)
+          .send({
+            from: currAccount,
+            value: value
+          })
+          .on('transactionHash', async txHash => {
+            console.log(txHash);
+            fn(txHash);
+          });
+    }else{
+      token.methods
+      .approve(contractAddress, _total)
       .send({
         from: currAccount
       })
@@ -163,6 +183,8 @@ const bulkSendToken = async (
           });
         return hash;
       });
+    }
+    
   } catch (err) {
     return null;
   }
