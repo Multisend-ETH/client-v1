@@ -189,6 +189,7 @@ class SendBox extends React.Component {
                     }
                   });
                 } catch (err) {
+                  console.log("token name error ", err)
                   return;
                 }
               }
@@ -251,7 +252,7 @@ class SendBox extends React.Component {
               type="checkbox"
             />{' '}
             <span className="tip-text">
-              Send <span>{tokenSym}</span> tip to multisend
+              Donate <span>{tokenSym}</span> to multisend
             </span>{' '}
             <input
               className="tip-input"

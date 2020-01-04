@@ -50,6 +50,9 @@
   .mm-newAddress{
     width: 180px !important;
   }
+  div.tip-container span.tip-text {
+    margin-left: 0;
+  }
 }
 
 .send-box .form {
@@ -209,14 +212,17 @@
 }
 
 .tip-container input.tip-check{
-  width: 3%;
+  width: .8rem;
 }
 
 .tip-container span.tip-text {
   display: inline-flex;
   align-items: center;
-  width: 44%;
+  width: 43%;
   padding-top: 5px;
+  color: #1bbf0d;
+  margin-left: 0.2rem;
+  margin-right: 2%;
 }
 
 .tip-container span.tip-text span {
