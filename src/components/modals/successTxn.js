@@ -10,7 +10,7 @@ export default withContext(({ Ref, ctx }) => (
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href={`https://ropsten.etherscan.io/tx/${ctx.txHash}`}
+        href={`https://etherscan.io/tx/${ctx.txHash}`}
       >
         View on etherscan
       </a>
