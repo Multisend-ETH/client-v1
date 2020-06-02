@@ -27,7 +27,7 @@ export default class Provider extends React.Component {
       modalName: "",
       errorMessage: "",
       network: "",
-      tipAddress: "0x0663dC599539F98F4b319fA3ceED721D63DecA7c",
+      tipAddress: "0x79e688fACa70Ae47484187B6f1A650c4b6494E52",
       tipAmount: "0",
       tip: false,
       metamaskAddress: "",
