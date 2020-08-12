@@ -125,10 +125,8 @@ const bulkSendToken = async (
   const _tokenDecimals = await token.methods.decimals().call();
   const tokenDecimals = new BN(Number(_tokenDecimals))
   for (const a of _amountArr) {
-    console.log((Number(a) * 10**10).toString())
-    const _bigA = new BN((Number(a) * 10**10).toString())
-    const powTenA = _bigA.mul(ten.pow(tokenDecimals))
-    const bigA = powTenA.div(ten.pow(ten))
+    const bigA = ten.pow(tokenDecimals).muln(Number(a));
+    console.log(bigA.toString());
     amountArr.push(bigA.toString());
     total = total.add(bigA)
   }
