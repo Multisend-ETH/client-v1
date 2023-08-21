@@ -154,6 +154,10 @@ class SendBox extends React.Component {
       btnText = 'Send';
     }
 
+    if(ctx.network !== 'main'){
+      disabled = true;
+    }
+
     return (
       <div className="board shadowize send-box">
         <div>

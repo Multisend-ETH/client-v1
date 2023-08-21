@@ -17,8 +17,8 @@
     "web3": "^1.0.0-beta.35"
   },
   "scripts": {
-    "start": "HOST=0.0.0.0 react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "start": "HOST=0.0.0.0 react-scripts --openssl-legacy-provider start",
+    "build": "GENERATE_SOURCEMAP=false react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "publish": "yarn run build && now ./build --production && now alias",

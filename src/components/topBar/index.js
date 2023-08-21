@@ -16,7 +16,7 @@ export default withContext(({ ctx, beta}) => {
       </Button>    
   } else{
     return <Button  customStyle="ms-btn wt-icon  testnet">
-        {ctx.network}
+        unsupported
       </Button>   
   }
  }
